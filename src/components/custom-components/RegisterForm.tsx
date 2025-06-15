@@ -38,7 +38,7 @@ const RegisterForm = () => {
         <div className="flex justify-center items-center h-screen">
             <form
                 onSubmit={handleSubmit(handleRegister)}
-                className="relative w-96 flex-col bg-clip-border bg-[#ffffff] text-gray-700"
+                className="relative w-96 flex-col bg-clip-border bg-blue-50 rounded-lg text-gray-700"
             >
                 <div
                     className="relative mx-4 -mt-6 mb-4 grid h-28 place-items-center overflow-hidden rounded-xl bg-gradient-to-tr from-cyan-600 to-cyan-400 bg-clip-border text-white shadow-lg shadow-cyan-500/40"
