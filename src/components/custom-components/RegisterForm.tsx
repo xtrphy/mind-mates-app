@@ -1,6 +1,7 @@
 "use client";
 
 import Link from 'next/link';
+import GoBack from './GoBack';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -35,7 +36,7 @@ const RegisterForm = () => {
     }
 
     return (
-        <div className="flex justify-center items-center h-screen">
+        <div className="flex flex-col gap-4 justify-center items-center h-screen">
             <form
                 onSubmit={handleSubmit(handleRegister)}
                 className="relative w-96 flex-col bg-clip-border bg-blue-50 rounded-lg text-gray-700"
@@ -116,6 +117,7 @@ const RegisterForm = () => {
                     </p>
                 </div>
             </form>
+            <GoBack />
         </div>
     );
 };

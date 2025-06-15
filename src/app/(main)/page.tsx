@@ -8,9 +8,9 @@ const Home = () => {
     if (!session) return <p>Not logged in</p>
 
     return (
-        <div>
+        <div className="p-10 flex flex-col items-center gap-4">
             <p>Welcome {session.user?.name}</p>
-            <button onClick={() => signOut()}>Logout</button>
+            <button className="py-2 px-4 bg-cyan-200 rounded-lg hover:bg-cyan-400 duration-200 transition-colors cursor-pointer" onClick={() => signOut()}>Logout</button>
         </div>
     );
 };

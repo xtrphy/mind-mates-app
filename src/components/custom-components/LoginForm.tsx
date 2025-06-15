@@ -4,6 +4,7 @@ import { signIn } from 'next-auth/react';
 import { useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
+import GoBack from './GoBack';
 
 const LoginForm = () => {
     const [email, setEmail] = useState("");
@@ -25,7 +26,7 @@ const LoginForm = () => {
     const error = searchParams.get("error");
 
     return (
-        <div className="flex justify-center items-center h-screen">
+        <div className="flex flex-col gap-4 justify-center items-center h-screen">
             <form
                 onSubmit={handleSubmit}
                 className="relative w-96 flex-col bg-clip-border bg-blue-50 rounded-lg text-gray-700"
@@ -134,6 +135,7 @@ const LoginForm = () => {
                     </p>
                 </div>
             </form>
+            <GoBack />
         </div>
     );
 };
