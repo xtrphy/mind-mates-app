@@ -1,12 +1,19 @@
 import Image from "next/image";
 
-const Card = ({ icon, title, subtitle, text }) => {
+interface CardProps {
+    icon: string;
+    title: string;
+    subtitle: string;
+    text: string;
+}
+
+const Card = ({ icon, title, subtitle, text }: CardProps) => {
     return (
         <div
             className="group cursor-pointer transform transition-all duration-500 hover:scale-105 hover:-rotate-1 w-fit"
         >
             <div
-                className="text-white rounded-3xl border border-white/10 bg-gradient-to-br from-[#010101] via-[#090909] to-[#010101] shadow-2xl duration-700 z-10 relative backdrop-blur-xl hover:border-white/25 overflow-hidden hover:shadow-white/5 hover:shadow-3xl w-[350px]"
+                className="text-white rounded-3xl border border-white/10 bg-gradient-to-b from-[#4ED6DA] to-[#04789D] shadow-2xl duration-700 z-10 relative backdrop-blur-xl hover:border-white/25 overflow-hidden hover:shadow-white/5 hover:shadow-3xl w-[350px] h-[400px]"
             >
                 <div className="absolute inset-0 z-0 overflow-hidden">
                     <div
@@ -49,7 +56,7 @@ const Card = ({ icon, title, subtitle, text }) => {
                                     className="transform group-hover:rotate-180 transition-transform duration-700"
                                 >
                                     <Image
-                                        src='/doctor1.svg'
+                                        src={icon}
                                         alt="Doctor"
                                         width={50}
                                         height={50}

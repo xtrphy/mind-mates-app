@@ -1,5 +1,6 @@
 import Header from "@/components/custom-components/Header";
-import "../globals.css";
+import "../globals.css"
+import Footer from "@/components/custom-components/Footer";
 
 export default function RootLayout({
     children,
@@ -9,7 +10,10 @@ export default function RootLayout({
     return (
         <>
             <Header />
-            {children}
+            <main className="flex flex-col items-center">
+                {children}
+            </main>
+            <Footer />
         </>
     );
 }
