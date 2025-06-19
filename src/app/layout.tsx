@@ -5,7 +5,8 @@ import SessionWrapper from "@/components/custom-components/SessionWrapper";
 
 const poppins = Poppins({
     subsets: ['latin'],
-    weight: ['700', '600', '500', '400', '300']
+    weight: ['700', '600', '500', '400', '300'],
+    variable: '--font-poppins'
 });
 
 export const metadata: Metadata = {
@@ -19,13 +20,11 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
+        <html lang="en" className={`${poppins.className} antialiased`}>
             <head>
                 <link rel="icon" href="/favicon.png" />
             </head>
-            <body
-                className={`${poppins.className} antialiased`}
-            >
+            <body>
                 <SessionWrapper>
                     {children}
                 </SessionWrapper>
