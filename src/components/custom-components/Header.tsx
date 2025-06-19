@@ -1,8 +1,12 @@
 'use client';
+import { Session } from "next-auth";
 import Image from "next/image";
 import Link from "next/link";
+import Dropdown from './Dropdown';
 
-const Header = () => {
+type HeaderProps = { session: Session | null }
+
+const Header = ({ session }: HeaderProps) => {
     return (
         <header className="bg-[#f4feff] shadow font-semibold text-lg fixed top-0 left-0 right-0 z-1000">
             <div className="flex items-center justify-between px-30 py-4">
@@ -25,9 +29,13 @@ const Header = () => {
                     </ul>
                 </nav>
 
-                <Link href='/register' className="py-1.5 px-8 font-medium rounded-3xl bg-gradient-to-r from-cyan-400 to-cyan-700 hover:from-cyan-500 hover:to-cyan-800 text-white text-lg shadow-md shadow-cyan-500/40 hover:bg-blue-500 transition-colors duration-200">
-                    Register
-                </Link>
+                {session ? (
+                    <Dropdown />
+                ) : (
+                    <Link href='/register' className="py-1.5 px-8 font-medium rounded-3xl bg-gradient-to-r from-cyan-400 to-cyan-700 hover:from-cyan-500 hover:to-cyan-800 text-white text-lg shadow-md shadow-cyan-500/40 hover:bg-blue-500 transition-colors duration-200">
+                        Register
+                    </Link>
+                )}
 
             </div>
         </header>
