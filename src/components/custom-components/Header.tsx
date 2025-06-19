@@ -1,6 +1,6 @@
+'use client';
 import Image from "next/image";
 import Link from "next/link";
-
 
 const Header = () => {
     return (
@@ -19,13 +19,15 @@ const Header = () => {
 
                 <nav>
                     <ul className="flex gap-8">
-                        <li className="hover:text-gray-400 duration-200 transition-colors"><Link href='/functionality'>Functionality</Link></li>
-                        <li className="hover:text-gray-400 duration-200 transition-colors"><Link href='/about'>About Us</Link></li>
-                        <li className="hover:text-gray-400 duration-200 transition-colors"><Link href='/support'>Support</Link></li>
+                        <li className="text-[#707176] hover:text-gray-400 duration-200 transition-colors"><Link href='/functionality'>Functionality</Link></li>
+                        <li className="text-[#707176] hover:text-gray-400 duration-200 transition-colors"><Link href='/about'>About Us</Link></li>
+                        <li className="text-[#707176] hover:text-gray-400 duration-200 transition-colors"><Link href='/support'>Support</Link></li>
                     </ul>
                 </nav>
 
-                <Link href='/register' className="py-1.5 px-6 font-medium rounded-xl bg-cyan-600 bg-clip-border text-white shadow-lg shadow-cyan-500/40 hover:bg-blue-500 transition-colors duration-200">Register</Link>
+                <Link href='/register' className="py-1.5 px-8 font-medium rounded-3xl bg-gradient-to-r from-cyan-400 to-cyan-700 hover:from-cyan-500 hover:to-cyan-800 text-white text-lg shadow-md shadow-cyan-500/40 hover:bg-blue-500 transition-colors duration-200">
+                    Register
+                </Link>
 
             </div>
         </header>
