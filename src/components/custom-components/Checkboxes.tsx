@@ -1,14 +1,12 @@
-import React from 'react';
-import prisma from '@/lib/prisma';
-import { getServerSession } from 'next-auth';
-import { authOptions } from '@/lib/auth';
+'use client';
 
-export default async function Checkboxes() {
-    const session = await getServerSession(authOptions);
-    const userId = session?.user.id
-    const habits = await prisma.habit.findMany({
-        where: { userId }
-    });
+import { useRouter } from 'next/navigation';
+import { deleteHabit } from '@/actions';
+import { Trash } from 'lucide-react';
+import { Habit } from '@/generated/prisma';
+
+export default function Checkboxes({ habits }: { habits: Habit[] }) {
+    const router = useRouter();
 
     return (
         <fieldset className='border-1 border-cyan-500 p-6 rounded-lg'>
@@ -19,7 +17,7 @@ export default async function Checkboxes() {
                     <label
                         key={habit.id}
                         htmlFor={habit.id}
-                        className="flex cursor-pointer items-start gap-4 rounded-lg border border-gray-200 p-4 transition hover:bg-gray-100 has-[:checked]:bg-blue-100"
+                        className="flex items-center cursor-pointer gap-4 rounded-lg border border-gray-200 p-4 transition hover:bg-gray-100 has-[:checked]:bg-blue-100"
                     >
                         <div className="flex items-center">
 
@@ -40,6 +38,16 @@ export default async function Checkboxes() {
                                 {habit.content}
                             </p>
                         </div>
+
+                        <button
+                            className='ml-auto cursor-pointer'
+                            onClick={async () => {
+                                await deleteHabit(habit.id)
+                                router.refresh();
+                            }}
+                        >
+                            <Trash />
+                        </button>
                     </label>
                 )) : (
                     <h3 className='text-center text-lg'>Add your first habit!</h3>
