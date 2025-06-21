@@ -12,7 +12,7 @@ export default async function Dashboard() {
         throw new Error('User is not authenticated');
     }
 
-    const habits = await getHabits(session?.user.id);
+    const habits = await getHabits();
 
     return (
         <div className="flex flex-col gap-10 items-center mx-auto w-[864px] mb-10">
