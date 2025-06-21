@@ -1,16 +1,18 @@
 import Quote from "@/components/custom-components/Quote";
 import TextareaWithButton from "@/components/custom-components/Textarea";
 import Checkboxes from "@/components/custom-components/Checkboxes";
-import prisma from '@/lib/prisma';
-import { getServerSession } from 'next-auth';
-import { authOptions } from '@/lib/auth';
+import { getHabits } from "@/actions";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
 
 export default async function Dashboard() {
     const session = await getServerSession(authOptions);
-    const userId = session?.user.id
-    const habits = await prisma.habit.findMany({
-        where: { userId }
-    });
+
+    if (!session?.user.id) {
+        throw new Error('User is not authenticated');
+    }
+
+    const habits = await getHabits(session?.user.id);
 
     return (
         <div className="flex flex-col gap-10 items-center mx-auto w-[864px] mb-10">

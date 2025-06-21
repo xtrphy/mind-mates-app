@@ -8,7 +8,7 @@ type HeaderProps = { session: Session | null }
 
 const Header = ({ session }: HeaderProps) => {
     return (
-        <header className="bg-[#f4feff] shadow font-semibold text-lg fixed top-0 left-0 right-0 z-1000">
+        <header className="bg-[#f4feff] shadow font-semibold text-lg fixed top-0 left-0 right-0 z-40">
             <div className="flex items-center justify-between px-30 py-4">
 
                 <Link href='/' className="flex items-center hover:text-gray-500 duration-200 transition-colors">
