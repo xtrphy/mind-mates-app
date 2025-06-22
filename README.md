@@ -2,6 +2,8 @@
 
 A full-stack app to record and manage your **thoughts** and **habits**, built with Next.js, Prisma, and shadcn/ui.
 
+## 👉 [Live demo](https://mind-mates-app.vercel.app/)
+
 ---
 
 ## Features
