@@ -54,13 +54,27 @@ export async function updateHabitStatus(habitId: string, completed: boolean) {
 }
 
 // Thoughts
+export async function getThoughts() {
+    const session = await getServerSession(authOptions);
+    const userId = session?.user.id;
+
+    const thoughts = await prisma.record.findMany({
+        where: { userId },
+        orderBy: {
+            createdAt: 'desc',
+        }
+    });
+
+    return thoughts;
+}
+
 export async function createThought(formData: FormData) {
     const session = await getServerSession(authOptions);
     const userId = session?.user.id;
 
     const formContent = formData.get('content') as string;
 
-    const { title, content } = splitText(formContent, 50);
+    const { title, content } = splitText(formContent, 20);
 
     await prisma.record.create({
         data: {
@@ -71,4 +85,10 @@ export async function createThought(formData: FormData) {
             title,
         }
     })
+}
+
+export async function deleteThought(thoughtId: string) {
+    await prisma.record.delete({
+        where: { id: thoughtId }
+    });
 }

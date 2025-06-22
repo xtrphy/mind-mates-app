@@ -23,9 +23,9 @@ const Header = ({ session }: HeaderProps) => {
 
                 <nav>
                     <ul className="flex gap-8">
-                        <li className="text-[#707176] hover:text-gray-400 duration-200 transition-colors"><Link href='/functionality'>Functionality</Link></li>
-                        <li className="text-[#707176] hover:text-gray-400 duration-200 transition-colors"><Link href='/about'>About Us</Link></li>
-                        <li className="text-[#707176] hover:text-gray-400 duration-200 transition-colors"><Link href='/support'>Support</Link></li>
+                        <li className="text-[#707176] hover:text-gray-400 duration-200 transition-colors"><Link href='#'>Functionality</Link></li>
+                        <li className="text-[#707176] hover:text-gray-400 duration-200 transition-colors"><Link href='#'>About Us</Link></li>
+                        <li className="text-[#707176] hover:text-gray-400 duration-200 transition-colors"><Link href='#'>Support</Link></li>
                     </ul>
                 </nav>
 

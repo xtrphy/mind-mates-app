@@ -22,7 +22,7 @@ export default function DropdownMenuDemo() {
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-56" align="end">
                 <DropdownMenuGroup>
-                    <Link href='/profile'>
+                    <Link href='#'>
                         <DropdownMenuItem className="cursor-pointer">
                             Profile
                         </DropdownMenuItem>
@@ -32,7 +32,7 @@ export default function DropdownMenuDemo() {
                             Dashboard
                         </DropdownMenuItem>
                     </Link>
-                    <Link href='/settings'>
+                    <Link href='#'>
                         <DropdownMenuItem className="cursor-pointer">
                             Settings
                         </DropdownMenuItem>

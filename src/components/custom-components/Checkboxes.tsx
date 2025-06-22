@@ -6,6 +6,7 @@ import { deleteHabit, updateHabitStatus } from '@/actions';
 import { SmileIcon, Trash, Loader2 } from 'lucide-react';
 import { Habit } from '@/generated/prisma';
 import DialogDemo from './Dialog';
+import { toast } from 'sonner';
 
 export default function Checkboxes({ habits }: { habits: Habit[] }) {
     const router = useRouter();
@@ -42,7 +43,17 @@ export default function Checkboxes({ habits }: { habits: Habit[] }) {
                                         type="checkbox"
                                         checked={habit.completed}
                                         disabled={isLoading}
-                                        onChange={() => handleCheckboxChange(habit.id, habit.completed)}
+                                        onChange={async () => {
+                                            try {
+                                                await handleCheckboxChange(habit.id, habit.completed);
+                                                toast.success(
+                                                    habit.completed ? "Habit marked as incomplete" : "✅ Habit completed!"
+                                                );
+                                            } catch (error) {
+                                                toast.error("Something went wrong");
+                                                console.error(error)
+                                            }
+                                        }}
                                     />
                                 </div>
 
@@ -62,8 +73,14 @@ export default function Checkboxes({ habits }: { habits: Habit[] }) {
                                         disabled={isLoading}
                                         className='ml-auto cursor-pointer transition-colors duration-100 hover:bg-gray-300 hover:text-red-500 p-2 rounded-lg'
                                         onClick={async () => {
-                                            await deleteHabit(habit.id)
-                                            router.refresh();
+                                            try {
+                                                await deleteHabit(habit.id)
+                                                toast.success("Habit successfully deleted!");
+                                                router.refresh();
+                                            } catch (error) {
+                                                toast.error("Something went wrong");
+                                                console.error(error);
+                                            }
                                         }}
                                     >
                                         <Trash />

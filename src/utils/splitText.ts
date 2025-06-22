@@ -1,4 +1,4 @@
-export function splitText(text: string, maxTitleLength: number = 50) {
+export function splitText(text: string, maxTitleLength: number = 20) {
     const trimmed = text.trim();
 
     if (trimmed.length <= maxTitleLength) {
