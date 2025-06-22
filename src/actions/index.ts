@@ -2,8 +2,10 @@
 
 import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { splitText } from "@/utils/splitText";
 import { getServerSession } from "next-auth";
 
+// Habits
 export async function getHabits() {
     const session = await getServerSession(authOptions);
     const userId = session?.user.id;
@@ -49,4 +51,24 @@ export async function updateHabitStatus(habitId: string, completed: boolean) {
         where: { id: habitId },
         data: { completed },
     });
+}
+
+// Thoughts
+export async function createThought(formData: FormData) {
+    const session = await getServerSession(authOptions);
+    const userId = session?.user.id;
+
+    const formContent = formData.get('content') as string;
+
+    const { title, content } = splitText(formContent, 50);
+
+    await prisma.record.create({
+        data: {
+            content,
+            user: {
+                connect: { id: userId }
+            },
+            title,
+        }
+    })
 }

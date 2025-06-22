@@ -14,12 +14,34 @@ import { Label } from "@/components/ui/label"
 import { createHabit } from "@/actions"
 import { useRouter } from "next/navigation"
 import { useRef, useState } from "react"
+import { toast } from "sonner"
 
 
 export default function DialogDemo() {
     const [open, setOpen] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const formRef = useRef<HTMLFormElement>(null);
     const router = useRouter();
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+
+        const formData = new FormData(formRef.current!);
+
+        try {
+            await createHabit(formData);
+            toast.success("Habit successfully created!");
+            formRef.current?.reset();
+            router.refresh();
+            setOpen(false);
+        } catch (error) {
+            toast.error("Something went wrong");
+            console.error(error);
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
 
     return (
         <Dialog open={open} onOpenChange={setOpen}>
@@ -37,12 +59,7 @@ export default function DialogDemo() {
 
                 <form
                     ref={formRef}
-                    action={async (formData) => {
-                        await createHabit(formData);
-                        formRef.current?.reset();
-                        router.refresh();
-                        setOpen(false);
-                    }}
+                    onSubmit={handleSubmit}
                     className="grid gap-4"
                 >
                     <div className="grid gap-3">
@@ -69,7 +86,13 @@ export default function DialogDemo() {
                         <DialogClose asChild>
                             <Button className="cursor-pointer" variant="outline">Cancel</Button>
                         </DialogClose>
-                        <Button className="cursor-pointer bg-cyan-500 hover:bg-cyan-600" type="submit">Submit</Button>
+                        <Button
+                            className="cursor-pointer bg-cyan-500 hover:bg-cyan-600"
+                            type="submit"
+                            disabled={isSubmitting}
+                        >
+                            {isSubmitting ? "Submitting..." : "Submit"}
+                        </Button>
                     </DialogFooter>
                 </form>
             </DialogContent>

@@ -4,6 +4,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import Link from "next/link";
 import Image from "next/image";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
     title: "Dashboard",
@@ -23,6 +24,7 @@ export default async function RootLayout({
             <main className='pt-[68px]'>
                 {children}
             </main>
+            <Toaster position="top-right" richColors />
             <footer className="flex justify-center border-t-1 bg-[#f4feff] shadow font-semibold text-lg py-6">
                 <Link href='/' className="flex items-center hover:text-gray-500 duration-200 transition-colors">
                     <Image
