@@ -2,9 +2,8 @@
 
 A full-stack app to record and manage your **thoughts** and **habits**, built with Next.js, Prisma, and shadcn/ui.
 
-## 👉 [Live demo](https://mind-mates-app.vercel.app/)
+[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen?style=for-the-badge&logo=netlify)](https://mind-mates-app.vercel.app/)
 
----
 
 ## Features
 
@@ -15,7 +14,6 @@ A full-stack app to record and manage your **thoughts** and **habits**, built wi
 - Client-side feedback via **Sonner** toast notifications
 - Fully typed server actions (with TypeScript and Prisma)
 
----
 
 ## Tech Stack
 
@@ -25,7 +23,6 @@ A full-stack app to record and manage your **thoughts** and **habits**, built wi
 - **Tailwind CSS**
 - **shadcn/ui, uiverse** (UI components)
 
----
 
 ## Getting Started
 
@@ -36,25 +33,25 @@ A full-stack app to record and manage your **thoughts** and **habits**, built wi
    ```
 
 2. Install dependencies:
-      ```bash
-      npm install
-      ```
+   ```bash
+   npm install
+   ```
       
 3. Setup your .env file:
-```env
-DATABASE_URL="postgresql://user:password@localhost:5432/mindmates"
-NEXTAUTH_URL="http://localhost:3000"
-```
+   ```env
+   DATABASE_URL="postgresql://user:password@localhost:5432/mindmates"
+   NEXTAUTH_URL="http://localhost:3000"
+   ```
 
 4. Run migrations:
-```basg
-npx prisma migrate dev --name init
-```
+   ```basg
+   npx prisma migrate dev --name init
+   ```
 
 5. Start the development server:
-```bash
-npm run dev
-```
+   ```bash
+   npm run dev
+   ```
 
 ## Contributing
 
